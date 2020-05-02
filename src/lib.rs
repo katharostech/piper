@@ -22,10 +22,12 @@ mod event;
 mod lock;
 mod mutex;
 mod pipe;
+mod change_notifier;
 
 pub use arc::Arc;
 pub use chan::{chan, Receiver, Sender};
 pub use event::{Event, EventListener};
+pub use change_notifier::ChangeNotifier;
 pub use lock::{Lock, LockGuard};
 pub use mutex::{Mutex, MutexGuard};
 pub use pipe::{pipe, Reader, Writer};
