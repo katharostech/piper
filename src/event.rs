@@ -23,6 +23,7 @@ const NOTIFIED: usize = 1 << 0;
 const NOTIFIABLE: usize = 1 << 1;
 
 /// Inner state of [`Event`].
+#[derive(Debug)]
 struct Inner {
     /// Holds bits [`NOTIFIED`] and [`NOTIFIABLE`].
     flags: AtomicUsize,
@@ -63,6 +64,7 @@ impl Inner {
 /// another another active listener.
 ///
 /// Listeners are registered and notified in the first-in first-out fashion, ensuring fairness.
+#[derive(Debug)]
 pub struct Event {
     /// A pointer to heap-allocated inner state.
     ///
@@ -198,6 +200,7 @@ impl Default for Event {
 ///
 /// If a notified listener is dropped without ever waiting for a notification, dropping will notify
 /// another another active listener.
+#[derive(Debug)]
 pub struct EventListener {
     /// A reference to [`Event`]'s inner state.
     inner: Arc<Inner>,
@@ -393,6 +396,7 @@ struct Entry {
 }
 
 /// A linked list of entries.
+#[derive(Debug)]
 struct List {
     /// First entry in the list.
     head: Option<NonNull<Entry>>,
